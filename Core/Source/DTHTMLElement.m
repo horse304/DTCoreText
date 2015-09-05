@@ -329,6 +329,10 @@ NSDictionary *_classesForNames = nil;
 	{
 		[tmpDict setObject:DTNSNumberFromCGFloat(_backgroundCornerRadius) forKey:DTBackgroundCornerRadiusAttribute];
 	}
+	
+	if (!UIEdgeInsetsEqualToEdgeInsets(_borderWidth, UIEdgeInsetsZero)) {
+		[tmpDict setObject:[NSValue valueWithUIEdgeInsets:_borderWidth] forKey:DTBorderWidthAttribute];
+	}
 		
 	return tmpDict;
 }

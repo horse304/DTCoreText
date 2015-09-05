@@ -31,6 +31,11 @@
 	[string appendFormat:@"\"%@\"\n", [_text stringByNormalizingWhitespace]];
 }
 
+- (void)inheritAttributesFromElement:(DTHTMLElement *)element{
+	[super inheritAttributesFromElement:element];
+	_borderWidth = element.borderWidth;
+}
+
 - (NSAttributedString *)attributedString
 {
 	@synchronized(self)

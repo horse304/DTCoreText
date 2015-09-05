@@ -113,6 +113,30 @@
 	}
 }
 
+- (void)drawBackgroundAndBorderInContext:(CGContextRef)context inRect:(CGRect)rect {
+	CGContextSaveGState(context);
+	DTColor *backgroundColor = [self.attributes backgroundColor];
+	DTColor *borderColor = [self.attributes backgroundStrokeColor];
+	CGFloat borderRadius = [self.attributes backgroundCornerRadius];
+	UIEdgeInsets borderWidth = [self.attributes borderWidth];
+	
+	UIBezierPath *backgroundPath = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:borderRadius];
+	if (backgroundColor)
+	{
+		CGContextAddPath(context, backgroundPath.CGPath);
+		CGContextSetFillColorWithColor(context, backgroundColor.CGColor);
+		CGContextFillPath(context);
+	}
+	
+	if (borderColor) {
+		CGContextAddPath(context, backgroundPath.CGPath);
+		CGContextSetStrokeColorWithColor(context, borderColor.CGColor);
+		CGContextSetLineWidth(context, borderWidth.top);
+		CGContextStrokePath(context);
+	}
+	CGContextRestoreGState(context);
+}
+
 - (void)drawDecorationInContext:(CGContextRef)context
 {
 	// get the scaling factor of the current translation matrix
@@ -127,12 +151,13 @@
 	CGFloat smallestPixelWidth = 1.0f/contentScale;
 	
 	DTColor *backgroundColor = [self.attributes backgroundColor];
+	DTColor *borderColor = [self.attributes backgroundStrokeColor];
 	
 	// -------------- Line-Out, Underline, Background-Color
 	BOOL drawStrikeOut = [[_attributes objectForKey:DTStrikeOutAttribute] boolValue];
 	BOOL drawUnderline = [[_attributes objectForKey:(id)kCTUnderlineStyleAttributeName] boolValue];
 	
-	if (drawStrikeOut||drawUnderline||backgroundColor)
+	if (drawStrikeOut||drawUnderline||backgroundColor||borderColor)
 	{
 		// calculate area covered by non-whitespace
 		CGRect lineFrame = _line.frame;
@@ -165,12 +190,9 @@
 				break;
 		}
 		
-		if (backgroundColor)
-		{
+		if (backgroundColor||borderColor) {
 			CGRect backgroundColorRect = CGRectIntegral(CGRectMake(runStrokeBounds.origin.x, lineFrame.origin.y, runStrokeBounds.size.width, lineFrame.size.height));
-			
-			CGContextSetFillColorWithColor(context, backgroundColor.CGColor);
-			CGContextFillRect(context, backgroundColorRect);
+			[self drawBackgroundAndBorderInContext:context inRect:backgroundColorRect];
 		}
 		
 		if (drawStrikeOut || drawUnderline)
