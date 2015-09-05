@@ -1140,12 +1140,17 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
 		CGContextSaveGState(context);
 		
 		// draw line bounds
-		CGContextSetRGBStrokeColor(context, 0.5, 0, 0.5f, 1.0f);
+		UIColor *randomColor = [UIColor colorWithRed:[self randomFloat] green:[self randomFloat] blue:[self randomFloat] alpha:1.0];
+		CGContextSetStrokeColorWithColor(context, randomColor.CGColor);
 		CGContextSetLineWidth(context, 2);
 		CGContextStrokeRect(context, CGRectInset(frame, 2, 2));
 		
 		CGContextRestoreGState(context);
 	}
+}
+
+- (CGFloat)randomFloat {
+	return arc4random()/RAND_MAX;
 }
 
 // draws the text blocks that should be visible within the mentioned range and inside the clipping rect of the context

@@ -24,6 +24,16 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2C30EE451B9A91520009594B /* WikiRender.html in Resources */ = {isa = PBXBuildFile; fileRef = 2C30EE441B9A91520009594B /* WikiRender.html */; settings = {ASSET_TAGS = (); }; };
+		2C30EE5C1B9A92710009594B /* WikiRenderStyles.css in Resources */ = {isa = PBXBuildFile; fileRef = 2C30EE5B1B9A92710009594B /* WikiRenderStyles.css */; settings = {ASSET_TAGS = (); }; };
+		2C30EE681B9B09DB0009594B /* DTTableHTMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C16B6221B99FDA2007AD234 /* DTTableHTMLElement.h */; settings = {ASSET_TAGS = (); }; };
+		2C30EE691B9B09DC0009594B /* DTTableHTMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C16B6221B99FDA2007AD234 /* DTTableHTMLElement.h */; settings = {ASSET_TAGS = (); }; };
+		2C30EE6A1B9B09DD0009594B /* DTTableHTMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C16B6221B99FDA2007AD234 /* DTTableHTMLElement.h */; settings = {ASSET_TAGS = (); }; };
+		2C30EE6B1B9B09DE0009594B /* DTTableHTMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C16B6221B99FDA2007AD234 /* DTTableHTMLElement.h */; settings = {ASSET_TAGS = (); }; };
+		2C30EE6C1B9B09E40009594B /* DTTableHTMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C16B6231B99FDA2007AD234 /* DTTableHTMLElement.m */; settings = {ASSET_TAGS = (); }; };
+		2C30EE6D1B9B09E50009594B /* DTTableHTMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C16B6231B99FDA2007AD234 /* DTTableHTMLElement.m */; settings = {ASSET_TAGS = (); }; };
+		2C30EE6E1B9B09E60009594B /* DTTableHTMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C16B6231B99FDA2007AD234 /* DTTableHTMLElement.m */; settings = {ASSET_TAGS = (); }; };
+		2C30EE6F1B9B09E70009594B /* DTTableHTMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C16B6231B99FDA2007AD234 /* DTTableHTMLElement.m */; settings = {ASSET_TAGS = (); }; };
 		36F8CE961593590500E9599C /* DTTextBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = A7081EA11503645F002987F1 /* DTTextBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		36F8CECE1593AA3D00E9599C /* DTHTMLAttributedStringBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A7949A4514CAF58C00A8CCDE /* DTHTMLAttributedStringBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		36F8CECF1593AA4200E9599C /* DTHTMLAttributedStringBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A7949A4514CAF58C00A8CCDE /* DTHTMLAttributedStringBuilder.h */; };
@@ -930,6 +940,10 @@
 		1D6058910D05DD3D006BFB54 /* RTDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RTDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2C16B6221B99FDA2007AD234 /* DTTableHTMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTableHTMLElement.h; sourceTree = "<group>"; };
+		2C16B6231B99FDA2007AD234 /* DTTableHTMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTableHTMLElement.m; sourceTree = "<group>"; };
+		2C30EE441B9A91520009594B /* WikiRender.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WikiRender.html; sourceTree = "<group>"; };
+		2C30EE5B1B9A92710009594B /* WikiRenderStyles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = WikiRenderStyles.css; sourceTree = "<group>"; };
 		5AF0E4D86A6BE8FC798F9702 /* AutoLayoutDemoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoLayoutDemoViewController.xib; sourceTree = "<group>"; };
 		5AF0E4DB1FBCBA1C165C0959 /* AutoLayoutDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoLayoutDemoViewController.m; sourceTree = "<group>"; };
 		5AF0E909A170F1B0FF3CCC47 /* AutoLayoutDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoLayoutDemoViewController.h; sourceTree = "<group>"; };
@@ -1586,6 +1600,8 @@
 				A730BCD616D29588003B849F /* Languages.html */,
 				A740369016E51C9800ECCDE0 /* About.html */,
 				DDCCEB1D17005A4F009FF923 /* css.css */,
+				2C30EE441B9A91520009594B /* WikiRender.html */,
+				2C30EE5B1B9A92710009594B /* WikiRenderStyles.css */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1709,6 +1725,8 @@
 				A7EB84C0168B973A00D686B7 /* DTTextHTMLElement.m */,
 				A7EB84C9168B9A8400D686B7 /* DTTextAttachmentHTMLElement.h */,
 				A7EB84CA168B9A8400D686B7 /* DTTextAttachmentHTMLElement.m */,
+				2C16B6221B99FDA2007AD234 /* DTTableHTMLElement.h */,
+				2C16B6231B99FDA2007AD234 /* DTTableHTMLElement.m */,
 			);
 			name = DTHTMLElement;
 			sourceTree = "<group>";
@@ -1884,6 +1902,7 @@
 				36F8CECE1593AA3D00E9599C /* DTHTMLAttributedStringBuilder.h in Headers */,
 				A78EEA6316774B5F003B5540 /* UIFont+DTCoreText.h in Headers */,
 				A72D975F1684B38B005F8BA5 /* DTCoreTextFunctions.h in Headers */,
+				2C30EE681B9B09DB0009594B /* DTTableHTMLElement.h in Headers */,
 				A73AE7921686FC6A009CF8C3 /* DTHTMLWriter.h in Headers */,
 				A7EB849E168B3E9D00D686B7 /* DTHTMLParserNode.h in Headers */,
 				A7EB84A8168B3EC000D686B7 /* DTHTMLParserTextNode.h in Headers */,
@@ -1957,6 +1976,7 @@
 				A79BA6931B46A25A0086C2F6 /* DTImageTextAttachment.h in Headers */,
 				A79BA6AF1B46A2700086C2F6 /* NSAttributedString+SmallCaps.h in Headers */,
 				A7B130511B4B25BF0014E109 /* DTWebVideoView.h in Headers */,
+				2C30EE6B1B9B09DE0009594B /* DTTableHTMLElement.h in Headers */,
 				A79BA6AB1B46A2700086C2F6 /* NSAttributedString+HTML.h in Headers */,
 				A79BA6871B46A2530086C2F6 /* DTColor+Compatibility.h in Headers */,
 				A79BA66B1B46A24A0086C2F6 /* NSDictionary+DTCoreText.h in Headers */,
@@ -2018,6 +2038,7 @@
 				A7F7EFC21573603100F5A4D0 /* NSAttributedString+DTCoreText.h in Headers */,
 				A7F7EFC31573603100F5A4D0 /* NSString+HTML.h in Headers */,
 				A7F7EFC41573603100F5A4D0 /* DTColor+Compatibility.h in Headers */,
+				2C30EE691B9B09DC0009594B /* DTTableHTMLElement.h in Headers */,
 				A7F7EFC51573603100F5A4D0 /* DTCoreText.h in Headers */,
 				A7F7EFC61573603100F5A4D0 /* DTImage+HTML.h in Headers */,
 				A7F7EFC81573603100F5A4D0 /* DTCompatibility.h in Headers */,
@@ -2075,6 +2096,7 @@
 				E2262DFC163833AD00BFDAD7 /* NSMutableString+HTML.h in Headers */,
 				E2262DFE163833AD00BFDAD7 /* DTTextBlock.h in Headers */,
 				E2262EA41638485F00BFDAD7 /* DTCoreText.h in Headers */,
+				2C30EE6A1B9B09DD0009594B /* DTTableHTMLElement.h in Headers */,
 				A72D97611684B38B005F8BA5 /* DTCoreTextFunctions.h in Headers */,
 				A7EB84A0168B3E9D00D686B7 /* DTHTMLParserNode.h in Headers */,
 				A7EB84AA168B3EC000D686B7 /* DTHTMLParserTextNode.h in Headers */,
@@ -2496,10 +2518,12 @@
 				A788CA4C14863EF100E1AFD9 /* Video.html in Resources */,
 				A788CA4D14863EF100E1AFD9 /* WarAndPeace.html in Resources */,
 				A788CA4E14863EF100E1AFD9 /* XB Niloofar.ttf in Resources */,
+				2C30EE5C1B9A92710009594B /* WikiRenderStyles.css in Resources */,
 				A788CA4F14863EF100E1AFD9 /* XB NiloofarBd.ttf in Resources */,
 				A7D54EA514E003190063E78B /* Objects.html in Resources */,
 				A7A95D9514F3F45E002E3F7E /* LineHeight.html in Resources */,
 				A78C241115073BC50045651E /* TextBoxes.html in Resources */,
+				2C30EE451B9A91520009594B /* WikiRender.html in Resources */,
 				A72C15C71592FAF70064A67F /* CoreTextIssues.html in Resources */,
 				A73885A51606E9B2001D60C4 /* EmojiTest.html in Resources */,
 				A7D63CDA1611B9AC00D4712A /* Default-568h@2x.png in Resources */,
@@ -2651,6 +2675,7 @@
 				A7F5671714D841EA00D1F167 /* NSString+CSS.m in Sources */,
 				A7F5672A14D8506C00D1F167 /* NSAttributedString+SmallCaps.m in Sources */,
 				A7C7ACD814D924B1005A9C69 /* NSMutableString+HTML.m in Sources */,
+				2C30EE6C1B9B09E40009594B /* DTTableHTMLElement.m in Sources */,
 				A7B0B56B14D9921F0091C2C9 /* NSAttributedString+DTCoreText.m in Sources */,
 				A7081EA615036460002987F1 /* DTTextBlock.m in Sources */,
 				A78EEA6516774B5F003B5540 /* UIFont+DTCoreText.m in Sources */,
@@ -2776,6 +2801,7 @@
 				A79BA6AC1B46A2700086C2F6 /* NSAttributedString+HTML.m in Sources */,
 				A79BA6B41B46A2700086C2F6 /* NSCharacterSet+HTML.m in Sources */,
 				A79BA6761B46A24A0086C2F6 /* DTHTMLParserTextNode.m in Sources */,
+				2C30EE6F1B9B09E70009594B /* DTTableHTMLElement.m in Sources */,
 				A79BA68A1B46A2530086C2F6 /* DTImage+HTML.m in Sources */,
 				A79BA6BE1B46A2700086C2F6 /* DTTextBlock.m in Sources */,
 				A7B130581B4B25E30014E109 /* DTAccessibilityViewProxy.m in Sources */,
@@ -2843,6 +2869,7 @@
 				A7EB84AD168B3EC000D686B7 /* DTHTMLParserTextNode.m in Sources */,
 				A7EB84BD168B948000D686B7 /* DTBreakHTMLElement.m in Sources */,
 				A7EB84C7168B973A00D686B7 /* DTTextHTMLElement.m in Sources */,
+				2C30EE6D1B9B09E50009594B /* DTTableHTMLElement.m in Sources */,
 				A7EB84D1168B9A8500D686B7 /* DTTextAttachmentHTMLElement.m in Sources */,
 				A7EB84DB168B9B1300D686B7 /* DTHorizontalRuleHTMLElement.m in Sources */,
 				A7EB84ED168C657100D686B7 /* DTListItemHTMLElement.m in Sources */,
@@ -2876,6 +2903,7 @@
 				E2262DDC1638337D00BFDAD7 /* DTHTMLAttributedStringBuilder.m in Sources */,
 				E2262DDE1638337D00BFDAD7 /* DTHTMLElement.m in Sources */,
 				E2262DE01638337D00BFDAD7 /* DTCSSListStyle.m in Sources */,
+				2C30EE6E1B9B09E60009594B /* DTTableHTMLElement.m in Sources */,
 				E2262DE21638337D00BFDAD7 /* DTCSSStylesheet.m in Sources */,
 				E2262DE51638337D00BFDAD7 /* DTTextAttachment.m in Sources */,
 				E2262DE71638337D00BFDAD7 /* NSString+CSS.m in Sources */,

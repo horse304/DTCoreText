@@ -1,0 +1,332 @@
+/* this file is processed with xxd via a build rule and embedded in library */
+
+/* these styles come from Safari */
+
+/* note that comments are only permitted before selectors and before the styles */
+
+/* DO NOT fiddle with this file if you want to have your own styles,
+ pass your own stylesheet via the option parameter to override these defaults */
+
+html
+{
+	/* bla */
+	display:block;
+}
+
+head
+{
+	display:none;
+}
+
+title
+{
+	display:none;
+}
+
+style
+{
+	display:none;
+}
+
+body
+{
+	display:block;
+	color: #333;
+	line-height: 1.42857142857143;
+}
+
+article,aside,footer,header,hgroup,nav,section
+{
+	display:block;
+}
+
+p
+{
+	display:block;
+	-webkit-margin-before:1em;
+	-webkit-margin-after:1em;
+	-webkit-margin-start:0;
+	-webkit-margin-end:0;
+}
+
+ul,menu,dir
+{
+	display:block;
+	list-style-type:disc;
+	-webkit-margin-before:1em;
+	-webkit-margin-after:1em;
+	-webkit-margin-start:0;
+	-webkit-margin-end:0;
+	-webkit-padding-start:27px;
+}
+
+li
+{
+	display:list-item;
+}
+
+ol
+{
+	display:block;
+	list-style-type:decimal;
+	-webkit-margin-before:1em;
+	-webkit-margin-after:1em;
+	-webkit-margin-start:0;
+	-webkit-margin-end:0;
+	-webkit-padding-start:27px;
+}
+
+ul ul, ol ul
+{
+	list-style-type: circle;
+}
+
+ol ol ul, ol ul ul, ul ol ul, ul ul ul
+{
+	list-style-type: square;
+}
+
+code
+{
+	font-family:Courier;
+}
+
+pre, xmp, plaintext, listing
+{
+	display: block;
+	white-space: pre;
+	margin: 1em 0px;
+}
+
+/* color:-webkit-link */
+a
+{
+	color:#0000EE;
+	text-decoration:underline;
+}
+
+a:active {color:#FF0000;}  /* link while finger down */
+
+center
+{
+	text-align:center;
+	display:block;
+}
+
+strong,b
+{
+	font-weight:bolder;
+}
+
+i,em
+{
+	font-style:italic;
+}
+
+u
+{
+	text-decoration:underline;
+}
+
+big
+{
+	font-size:bigger;
+}
+
+small
+{
+	font-size:smaller;
+}
+
+sub
+{
+	font-size:smaller;
+	vertical-align:sub;
+}
+
+sup
+{
+	font-size:smaller;
+	vertical-align:super;
+}
+
+s,strike,del
+{
+	text-decoration:line-through;
+}
+
+tt,code,kbd,samp
+{
+}
+
+pre,xmp,plaintext,listing
+{
+	display:block;
+	white-space:pre;
+	margin-top:1em;
+	margin-right:0;
+	margin-bottom:1em;
+	margin-left:0;
+}
+
+h1
+{
+	display:block;
+	font-size:2em;
+	-webkit-margin-before:.67em;
+	-webkit-margin-after:.67em;
+	-webkit-margin-start:0;
+	-webkit-margin-end:0;
+	font-weight:bold;
+}
+
+h2
+{
+	display:block;
+	font-size:1.5em;
+	-webkit-margin-before:.83em;
+	-webkit-margin-after:.83em;
+	-webkit-margin-start:0;
+	-webkit-margin-end:0;
+	font-weight:bold;
+}
+
+h3
+{
+	display:block;
+	font-size:1.17em;
+	-webkit-margin-before:1em;
+	-webkit-margin-after:1em;
+	-webkit-margin-start:0;
+	-webkit-margin-end:0;
+	font-weight:bold;
+}
+
+h4
+{
+	display:block;
+	-webkit-margin-before:1.33em;
+	-webkit-margin-after:1.33em;
+	-webkit-margin-start:0;
+	-webkit-margin-end:0;
+	font-weight:bold;
+}
+
+h5
+{
+	display:block;
+	font-size:.83em;
+	-webkit-margin-before:1.67em;
+	-webkit-margin-after:1.67em;
+	-webkit-margin-start:0;
+	-webkit-margin-end:0;
+	font-weight:bold;
+}
+
+h6
+{
+	display:block;
+	font-size:.67em;
+	-webkit-margin-before:2.33em;
+	-webkit-margin-after:2.33em;
+	-webkit-margin-start:0;
+	-webkit-margin-end:0;
+	font-weight:bold;
+}
+
+div {
+	display: block;
+	margin: 0;
+}
+
+link {
+	display: none;
+}
+
+meta {
+	display: none;
+}
+
+script {
+	display: none;
+}
+
+hr {
+	display: block;
+	-webkit-margin-before: 0.5em;
+	-webkit-margin-after: 0.5em;
+	-webkit-margin-start: auto;
+	-webkit-margin-end: auto;
+	border-style: inset;
+	border-width: 1px;
+}
+
+table {
+	display: table;
+	border-collapse: separate;
+	border-spacing: 2px;
+	border-color: gray;
+}
+
+blockquote {
+	display: block;
+	border-color: #cccccc;
+	border-width-left: 1px;
+	color: #707070;
+	margin-left: 19px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.user-mention {
+	color: #3177c8;
+	font-weight: bold;
+}
+
+.user-mention:before {
+	content: "@"
+}
+
+img.emoticon {
+	width: 16px;
+	height: 16px;
+}
+
+tt {
+	display: inline;
+	background: #f5f5f5;
+	border-color: #cccccc;
+	border-radius: 2px;
+	border-width: 1px;
+	padding: 1px 3px;
+}
+
+.panel {
+	margin: 9px 0;
+	border-color: #cccccc;
+	border-width: 1px;
+	border-radius: 2px;
+}
+
+.panelContent {
+	padding:9px 12px;
+	margin-top: 0px;
+}
+
+.preformatted, .code {
+	display: block;
+	background: #f5f5f5;
+	border-color: #cccccc;
+	border-width: 1px;
+	border-radius: 2px;
+	font-size: 12px;
+	line-height: 1.3333;
+	font-family: monospace;
+}
+
+.panelHeader {
+	border-color: #cccccc;
+	border-width-bottom: 1px;
+	border-radius: 2px;
+	padding: 9px 12px;
+}
