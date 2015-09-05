@@ -86,7 +86,7 @@
 
 - (DTColor *)backgroundStrokeColor;
 - (CGFloat)backgroundCornerRadius;
-- (UIEdgeInsets)borderWidth;
+- (DTEdgeInsets)borderWidth;
 
 /**
  The text kerning value

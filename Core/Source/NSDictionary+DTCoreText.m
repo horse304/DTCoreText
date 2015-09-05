@@ -263,14 +263,14 @@
 	return 0.0f;
 }
 
-- (UIEdgeInsets)borderWidth {
+- (DTEdgeInsets)borderWidth {
 	NSValue *value = [self objectForKey:DTBorderWidthAttribute];
 	
 	if (value) {
-		return [value UIEdgeInsetsValue];
+		return DTEdgeInsetsValueFromNSValue(value);
 	}
 	
-	return UIEdgeInsetsZero;
+	return DTEdgeInsetsZero;
 }
 
 @end

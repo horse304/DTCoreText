@@ -18,6 +18,10 @@
 	// Edge Insets
 	#define DTEdgeInsets UIEdgeInsets
 	#define DTEdgeInsetsMake(top, left, bottom, right) UIEdgeInsetsMake(top, left, bottom, right)
+	#define DTEdgeInsetsEqualToEdgeInsets(x,y) UIEdgeInsetsEqualToEdgeInsets(x,y)
+	#define DTEdgeInsetsZero UIEdgeInsetsMake(0,0,0,0)
+	#define DTNSValueFromEdgeInsets(x) [NSValue valueWithUIEdgeInsets:x]
+	#define DTEdgeInsetsValueFromNSValue(x) [x UIEdgeInsetsValue]
 
 	// NS-style text attributes are possible with iOS SDK 6.0 or higher
 	#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_5_1
@@ -91,6 +95,8 @@
 	// Edge Insets
 	#define DTEdgeInsets NSEdgeInsets
 	#define DTEdgeInsetsMake(top, left, bottom, right) NSEdgeInsetsMake(top, left, bottom, right)
+	#define DTEdgeInsetsEqualToEdgeInsets(edgeInsets1,edgeInsets2) NSEdgeInsetsEqual(edgeInsets1,edgeInsets2)
+	#define DTEdgeInsetsZero NSEdgeInsetsMake(0,0,0,0)
 
 	// Mac supports NS-Style Text Attributes since 10.0
 	#define DTCORETEXT_SUPPORT_NS_ATTRIBUTES 1
@@ -133,6 +139,8 @@
 	}
 
 	#define DTNSNumberFromCGFloat(x) [NSNumber numberWithDouble:x]
+	#define DTNSValueFromEdgeInsets(x) [NSValue valueWithEdgeInsets:x]
+	#define DTEdgeInsetsValueFromNSValue(x) [x edgeInsetsValue]
 #endif
 
 // this enables generic ceil, floor, abs, round functions that work for 64 and 32 bit
