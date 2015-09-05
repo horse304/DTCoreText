@@ -37,6 +37,8 @@
 	CGFloat _backgroundStrokeWidth;
 	CGFloat _backgroundCornerRadius;
 	
+	DTEdgeInsets _borderWidth;
+	
 	CTUnderlineStyle _underlineStyle;
 	
 	NSString *_beforeContent;
@@ -168,6 +170,8 @@
  Background stroke width in the receiver
  */
 @property (nonatomic, assign) CGFloat backgroundCornerRadius;
+
+@property (nonatomic, assign) DTEdgeInsets borderWidth;
 
 /**
  The custom letter spacing of the receiver, default is 0px

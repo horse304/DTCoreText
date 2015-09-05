@@ -613,20 +613,20 @@
 
 - (BOOL)attributedTextContentView:(DTAttributedTextContentView *)attributedTextContentView shouldDrawBackgroundForTextBlock:(DTTextBlock *)textBlock frame:(CGRect)frame context:(CGContextRef)context forLayoutFrame:(DTCoreTextLayoutFrame *)layoutFrame
 {
-	UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(frame,1,1) cornerRadius:10];
-
-	CGColorRef color = [textBlock.backgroundColor CGColor];
-	if (color)
-	{
-		CGContextSetFillColorWithColor(context, color);
-		CGContextAddPath(context, [roundedRect CGPath]);
-		CGContextFillPath(context);
-		
-		CGContextAddPath(context, [roundedRect CGPath]);
-		CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
-		CGContextStrokePath(context);
-		return NO;
-	}
+//	UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(frame,1,1) cornerRadius:textBlock.borderRadius];
+//
+//	CGColorRef color = [textBlock.backgroundColor CGColor];
+//	if (color)
+//	{
+//		CGContextSetFillColorWithColor(context, color);
+//		CGContextAddPath(context, [roundedRect CGPath]);
+//		CGContextFillPath(context);
+//		
+//		CGContextAddPath(context, [roundedRect CGPath]);
+//		CGContextSetStrokeColorWithColor(context, textBlock.borderColor.CGColor);
+//		CGContextStrokePath(context);
+//		return NO;
+//	}
 	
 	return YES; // draw standard background
 }

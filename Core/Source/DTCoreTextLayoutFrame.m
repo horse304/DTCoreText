@@ -934,9 +934,14 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
     {
         DTTextBlock *textBlock = [firstBlockLine.textBlocks objectAtIndex:i];
         
-        blockFrame.origin.x += textBlock.padding.left;
-        blockFrame.size.width -= (textBlock.padding.left + textBlock.padding.right);
+        blockFrame.origin.x += textBlock.padding.left + textBlock.margin.left;
+        blockFrame.size.width -= (textBlock.padding.left + textBlock.padding.right + textBlock.margin.left + textBlock.margin.right);
     }
+	
+	
+	DTTextBlock *textBlock = [firstBlockLine.textBlocks objectAtIndex:level];
+	blockFrame.origin.x += textBlock.margin.left;
+	blockFrame.size.width -= (textBlock.margin.left + textBlock.margin.right);
 	
 	return CGRectIntegral(blockFrame);
 }
@@ -1023,10 +1028,65 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
 }
 
 #pragma mark - Drawing
+- (void)drawBorderWithEdgeInsets:(UIEdgeInsets)borderWidth borderRadius:(CGFloat)borderRadius color:(CGColorRef)color inContext:(CGContextRef)context frame:(CGRect)frame {
+	
+	if (borderWidth.top > 0) {
+		CGContextBeginPath(context);
+		CGContextSetStrokeColorWithColor(context, color);
+		
+		CGContextMoveToPoint(context, CGRectGetMinX(frame), CGRectGetMinY(frame));
+		CGContextAddLineToPoint(context, CGRectGetMaxX(frame), CGRectGetMinY(frame));
+		
+		CGContextSetLineWidth(context, borderWidth.top);
+		CGContextStrokePath(context);
+	}
+	
+	if (borderWidth.left > 0) {
+		CGContextBeginPath(context);
+		CGContextSetStrokeColorWithColor(context, color);
+		
+		CGContextMoveToPoint(context, CGRectGetMinX(frame), CGRectGetMinY(frame));
+		CGContextAddLineToPoint(context, CGRectGetMinX(frame), CGRectGetMaxY(frame));
+		
+		CGContextSetLineWidth(context, borderWidth.left);
+		CGContextStrokePath(context);
+	}
+	
+	if (borderWidth.bottom > 0) {
+		CGContextBeginPath(context);
+		CGContextSetStrokeColorWithColor(context, color);
+		
+		CGContextMoveToPoint(context, CGRectGetMinX(frame), CGRectGetMaxY(frame));
+		CGContextAddLineToPoint(context, CGRectGetMaxX(frame), CGRectGetMaxY(frame));
+		
+		CGContextSetLineWidth(context, borderWidth.bottom);
+		CGContextStrokePath(context);
+	}
+	
+	if (borderWidth.right > 0) {
+		CGContextBeginPath(context);
+		CGContextSetStrokeColorWithColor(context, color);
+		
+		CGContextMoveToPoint(context, CGRectGetMaxX(frame), CGRectGetMinY(frame));
+		CGContextAddLineToPoint(context, CGRectGetMaxX(frame), CGRectGetMaxY(frame));
+		
+		CGContextSetLineWidth(context, borderWidth.right);
+		CGContextStrokePath(context);
+	}
+}
+
+- (void)drawBorderWithOneSize:(CGFloat)borderSize borderRadius:(CGFloat)borderRadius color:(CGColorRef)color inContext:(CGContextRef)context frame:(CGRect)frame {
+	UIBezierPath *borderPath = [UIBezierPath bezierPathWithRoundedRect:frame cornerRadius:borderRadius];
+	CGContextAddPath(context, [borderPath CGPath]);
+	CGContextSetStrokeColorWithColor(context, color);
+	CGContextSetLineWidth(context, borderSize);
+	CGContextStrokePath(context);
+}
 
 // draw and individual text block to a graphics context and frame
 - (void)_drawTextBlock:(DTTextBlock *)textBlock inContext:(CGContextRef)context frame:(CGRect)frame
 {
+	CGContextSaveGState(context);
 	BOOL shouldDrawStandardBackground = YES;
 	if (_textBlockHandler)
 	{
@@ -1036,13 +1096,40 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
 	// draw standard background if necessary
 	if (shouldDrawStandardBackground)
 	{
-		if (textBlock.backgroundColor)
-		{
-			CGColorRef color = [textBlock.backgroundColor CGColor];
-			CGContextSetFillColorWithColor(context, color);
-			CGContextFillRect(context, frame);
+		if (textBlock.backgroundColor != nil || textBlock.borderColor != nil) {
+			if (textBlock.backgroundColor)
+			{
+				UIBezierPath *backgroundPath = [UIBezierPath bezierPathWithRoundedRect:frame cornerRadius:textBlock.borderRadius];
+				CGContextAddPath(context, [backgroundPath CGPath]);
+				CGColorRef color = [textBlock.backgroundColor CGColor];
+				CGContextSetFillColorWithColor(context, color);
+				CGContextFillPath(context);
+			}
+			if (textBlock.borderColor != nil &&
+				(textBlock.borderWidth.top > 0 ||
+				 textBlock.borderWidth.left > 0 ||
+				 textBlock.borderWidth.bottom > 0 ||
+				 textBlock.borderWidth.right > 0)) {
+					
+					if ((textBlock.borderWidth.top == textBlock.borderWidth.left) &&
+						(textBlock.borderWidth.top == textBlock.borderWidth.bottom) &&
+						(textBlock.borderWidth.top == textBlock.borderWidth.right)) {
+						[self drawBorderWithOneSize:textBlock.borderWidth.top
+									   borderRadius:textBlock.borderRadius
+											  color:textBlock.borderColor.CGColor
+										  inContext:context
+											  frame:frame];
+					} else {
+						[self drawBorderWithEdgeInsets:textBlock.borderWidth
+										  borderRadius:textBlock.borderRadius
+												 color:textBlock.borderColor.CGColor
+											 inContext:context
+												 frame:frame];
+					}
+			}
 		}
 	}
+	CGContextRestoreGState(context);
 	
 	if (_DTCoreTextLayoutFramesShouldDrawDebugFrames)
 	{

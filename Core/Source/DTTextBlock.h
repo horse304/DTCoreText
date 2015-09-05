@@ -17,12 +17,23 @@
  The space to be applied between the layouted text and the edges of the receiver
  */
 @property (nonatomic, assign) DTEdgeInsets padding;
+@property (nonatomic, assign) DTEdgeInsets margin;
 
 
 /**
  The background color to paint behind the text in the receiver
  */
 @property (nonatomic, strong) DTColor *backgroundColor;
+
+/**
+ The border width to paint behind the text in the receiver. By default borderWidth = (0,0,0,0)
+ */
+@property (nonatomic, assign) DTEdgeInsets borderWidth;
+/**
+ The border color to paint behind the text in the receiver
+ */
+@property (nonatomic, strong) DTColor *borderColor;
+@property (nonatomic, assign) CGFloat borderRadius;
 
 
 @end

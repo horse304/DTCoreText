@@ -410,6 +410,74 @@ extern unsigned int default_css_len;
 		// remove the shorthand
 		[styles removeObjectForKey:@"padding"];
 	}
+	
+	shortHand = [styles objectForKey:@"border-width"];
+	
+	if (shortHand)
+	{
+		NSArray *parts = [shortHand componentsSeparatedByString:@" "];
+		
+		NSString *topValue;
+		NSString *rightValue;
+		NSString *bottomValue;
+		NSString *leftValue;
+		
+		if ([parts count] == 4)
+		{
+			topValue = [parts objectAtIndex:0];
+			rightValue = [parts objectAtIndex:1];
+			bottomValue = [parts objectAtIndex:2];
+			leftValue = [parts objectAtIndex:3];
+		}
+		else if ([parts count] == 3)
+		{
+			topValue = [parts objectAtIndex:0];
+			rightValue = [parts objectAtIndex:1];
+			bottomValue = [parts objectAtIndex:2];
+			leftValue = [parts objectAtIndex:1];
+		}
+		else if ([parts count] == 2)
+		{
+			topValue = [parts objectAtIndex:0];
+			rightValue = [parts objectAtIndex:1];
+			bottomValue = [parts objectAtIndex:0];
+			leftValue = [parts objectAtIndex:1];
+		}
+		else
+		{
+			NSString *onlyValue = [parts objectAtIndex:0];
+			
+			topValue = onlyValue;
+			rightValue = onlyValue;
+			bottomValue = onlyValue;
+			leftValue = onlyValue;
+		}
+		
+		// only apply the ones where there is no previous direct setting
+		
+		if (![styles objectForKey:@"border-width-top"])
+		{
+			[styles setObject:topValue forKey:@"border-width-top"];
+		}
+		
+		if (![styles objectForKey:@"border-width-right"])
+		{
+			[styles setObject:rightValue forKey:@"border-width-right"];
+		}
+		
+		if (![styles objectForKey:@"border-width-bottom"])
+		{
+			[styles setObject:bottomValue forKey:@"border-width-bottom"];
+		}
+		
+		if (![styles objectForKey:@"border-width-left"])
+		{
+			[styles setObject:leftValue forKey:@"border-width-left"];
+		}
+		
+		// remove the shorthand
+		[styles removeObjectForKey:@"border-width"];
+	}
 
 	shortHand = [styles objectForKey:@"background"];
 

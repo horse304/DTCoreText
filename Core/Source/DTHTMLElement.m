@@ -14,6 +14,7 @@
 #import "DTListItemHTMLElement.h"
 #import "DTStylesheetHTMLElement.h"
 #import "DTTextHTMLElement.h"
+#import "DTTableHTMLElement.h"
 #import "DTTextBlock.h"
 #import "DTCSSListStyle.h"
 #import "NSString+HTML.h"
@@ -75,6 +76,7 @@ NSDictionary *_classesForNames = nil;
 	[tmpDict setObject:[DTTextAttachmentHTMLElement class] forKey:@"object"];
 	[tmpDict setObject:[DTTextAttachmentHTMLElement class] forKey:@"video"];
 	[tmpDict setObject:[DTTextAttachmentHTMLElement class] forKey:@"iframe"];
+	[tmpDict setObject:[DTTableHTMLElement class] forKey:@"table"];
 	
 	_classesForNames = [tmpDict copy];
 }
@@ -690,6 +692,8 @@ NSDictionary *_classesForNames = nil;
 	NSString *topKey = isWebKitAttribute?@"-before":@"-top";
 	NSString *bottomKey = isWebKitAttribute?@"-after":@"-bottom";
 	
+	NSString *dashMatchString = [prefix stringByAppendingString:@"-"];
+	
 	for (NSString *oneKey in styles)
 	{
 		if (![oneKey hasPrefix:prefix])
@@ -699,7 +703,7 @@ NSDictionary *_classesForNames = nil;
 		
 		NSString *attributeValue = [styles objectForKey:oneKey];
 		
-		NSRange dashRange = [oneKey rangeOfString:@"-"];
+		NSRange dashRange = [oneKey rangeOfString:dashMatchString];
 		
 		if (dashRange.length)
 		{
@@ -1245,14 +1249,7 @@ NSDictionary *_classesForNames = nil;
 	{
 		self.backgroundStrokeColor = DTColorCreateWithHTMLName(borderColor);
 	}
-	NSString *borderWidth = [[styles objectForKey:@"border-width"] lowercaseString];
-	if (borderWidth)
-	{
-		_backgroundStrokeWidth = [borderWidth floatValue];
-	}
-	else {
-		_backgroundStrokeWidth = 0.0f;
-	}
+	
 	NSString *cornerRadius = [[styles objectForKey:@"border-radius"] lowercaseString];
 	if (cornerRadius)
 	{
@@ -1308,6 +1305,20 @@ NSDictionary *_classesForNames = nil;
 		}
 	}
 	
+	BOOL hasBorderWidth = NO;
+	
+	if ([allKeys rangeOfString:@"border-width"].length)
+	{
+		hasBorderWidth = ([self _parseEdgeInsetsFromStyleDictionary:styles forAttributesWithPrefix:@"border-width" writingDirection:self.paragraphStyle.baseWritingDirection intoEdgeInsets:&_borderWidth] || hasBorderWidth);
+	}
+	
+	if (hasBorderWidth) {
+		if (_borderWidth.left>0 || _borderWidth.right>0 || _borderWidth.top>0 || _borderWidth.bottom>0)
+		{
+			needsTextBlock = YES;
+		}
+	}
+	
 	if (_displayStyle == DTHTMLElementDisplayStyleBlock)
 	{
 		// we only care for margins of block level elements
@@ -1329,10 +1340,16 @@ NSDictionary *_classesForNames = nil;
 			DTTextBlock *newBlock = [[DTTextBlock alloc] init];
 			
 			newBlock.padding = _padding;
+			newBlock.margin = _margins;
 			
 			// transfer background color to block
 			newBlock.backgroundColor = _backgroundColor;
 			_backgroundColor = nil;
+			
+			// transfer border styles to block
+			newBlock.borderColor = _backgroundStrokeColor;
+			newBlock.borderWidth = _borderWidth;
+			newBlock.borderRadius = _backgroundCornerRadius;
 			
 			if (self.paragraphStyle.textBlocks)
 			{
@@ -1459,7 +1476,7 @@ NSDictionary *_classesForNames = nil;
 	
 	_backgroundColor = element.backgroundColor;
 	_backgroundStrokeColor = element.backgroundStrokeColor;
-	_backgroundStrokeWidth = element.backgroundStrokeWidth;
+//	_backgroundStrokeWidth = element.backgroundStrokeWidth;
 	_backgroundCornerRadius = element.backgroundCornerRadius;
 	
 	// only inherit background-color from inline elements
@@ -1660,6 +1677,7 @@ NSDictionary *_classesForNames = nil;
 @synthesize backgroundStrokeColor = _backgroundStrokeColor;
 @synthesize backgroundStrokeWidth = _backgroundStrokeWidth;
 @synthesize backgroundCornerRadius = _backgroundCornerRadius;
+@synthesize borderWidth = _borderWidth;
 @synthesize letterSpacing = _letterSpacing;
 
 @end
