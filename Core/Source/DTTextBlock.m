@@ -13,6 +13,7 @@
 {
 	DTEdgeInsets _padding;
 	DTEdgeInsets _margin;
+	CGFloat _width;
 	DTColor *_backgroundColor;
 	DTEdgeInsets _borderWidth;
 	DTColor *_borderColor;
@@ -24,6 +25,7 @@
 	if (self) {
 		_padding = [aDecoder decodeDTEdgeInsetsForKey:@"padding"];
 		_margin = [aDecoder decodeDTEdgeInsetsForKey:@"margin"];
+		_width = [aDecoder decodeDoubleForKey:@"width"];
 		_backgroundColor = [aDecoder decodeObjectForKey:@"backgroundColor"];
 		_borderWidth = [aDecoder decodeDTEdgeInsetsForKey:@"borderWidth"];
 		_borderColor = [aDecoder decodeObjectForKey:@"borderColor"];
@@ -35,6 +37,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder {
 	[aCoder encodeDTEdgeInsets:_padding forKey:@"padding"];
 	[aCoder encodeDTEdgeInsets:_margin forKey:@"margin"];
+	[aCoder encodeDouble:_width forKey:@"width"];
 	[aCoder encodeObject:_backgroundColor forKey:@"backgroundColor"];
 	[aCoder encodeDTEdgeInsets:_borderWidth forKey:@"borderWidth"];
 	[aCoder encodeObject:_borderColor forKey:@"borderColor"];
@@ -54,6 +57,7 @@
 	calcHash = calcHash*31 + (NSUInteger)_margin.top;
 	calcHash = calcHash*31 + (NSUInteger)_margin.right;
 	calcHash = calcHash*31 + (NSUInteger)_margin.bottom;
+	calcHash = calcHash*31 + (NSUInteger)_width;
 	calcHash = calcHash*31 + (NSUInteger)_borderWidth.top;
 	calcHash = calcHash*31 + (NSUInteger)_borderWidth.left;
 	calcHash = calcHash*31 + (NSUInteger)_borderWidth.bottom;
@@ -99,6 +103,11 @@
 		return NO;
 	}
 	
+	if (other->_width != _width)
+	{
+		return NO;
+	}
+	
 	if (_borderWidth.left != other->_borderWidth.left ||
 		_borderWidth.top != other->_borderWidth.top ||
 		_borderWidth.right != other->_borderWidth.right ||
@@ -129,6 +138,7 @@
 
 @synthesize padding = _padding;
 @synthesize margin = _margin;
+@synthesize width = _width;
 @synthesize backgroundColor = _backgroundColor;
 @synthesize borderWidth = _borderWidth;
 @synthesize borderColor = _borderColor;

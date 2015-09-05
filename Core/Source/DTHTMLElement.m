@@ -1341,6 +1341,7 @@ NSDictionary *_classesForNames = nil;
 			
 			newBlock.padding = _padding;
 			newBlock.margin = _margins;
+			newBlock.width = _size.width;
 			
 			// transfer background color to block
 			newBlock.backgroundColor = _backgroundColor;

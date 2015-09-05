@@ -18,6 +18,7 @@
  */
 @property (nonatomic, assign) DTEdgeInsets padding;
 @property (nonatomic, assign) DTEdgeInsets margin;
+@property (nonatomic, assign) CGFloat width;
 
 
 /**

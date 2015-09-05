@@ -943,6 +943,10 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
 	blockFrame.origin.x += textBlock.margin.left;
 	blockFrame.size.width -= (textBlock.margin.left + textBlock.margin.right);
 	
+	if (textBlock.width > 0) {
+		blockFrame.size.width = textBlock.width;
+	}
+	
 	return CGRectIntegral(blockFrame);
 }
 
