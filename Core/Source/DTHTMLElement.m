@@ -457,6 +457,11 @@ NSDictionary *_classesForNames = nil;
 			// walk through children
 			tmpString = [[NSMutableAttributedString alloc] init];
 			
+			if (self.beforeContent && ![self.beforeContent isEqualToString:@""]) {
+				NSAttributedString *beforeAttributedString = [[NSAttributedString alloc] initWithString:self.beforeContent attributes:attributes];
+				[tmpString insertAttributedString:beforeAttributedString atIndex:0];
+			}
+			
 			DTHTMLElement *previousChild = nil;
 			
 			for (DTHTMLElement *oneChild in self.childNodes)

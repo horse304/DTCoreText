@@ -68,6 +68,10 @@ DTColor *DTColorCreateWithHexString(NSString *hexString)
 
 DTColor *DTColorCreateWithHTMLName(NSString *name)
 {
+	if ([name isEqualToString:@"transparent"]) {
+		return nil;
+	}
+	
 	if ([name hasPrefix:@"#"])
 	{
 		return DTColorCreateWithHexString([name substringFromIndex:1]);
