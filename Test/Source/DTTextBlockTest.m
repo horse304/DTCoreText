@@ -49,7 +49,7 @@
 	
 	NSUInteger hash = [block1 hash];
 	
-	XCTAssertEqual(hash, (NSUInteger)201010757, @"hash should be 201010757");
+	XCTAssertEqual(hash, (NSUInteger)8696731308392293531, @"hash should be 8696731308392293531");
 }
 
 - (void)testNSCodingEqual {
