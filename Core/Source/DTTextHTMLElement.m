@@ -42,9 +42,24 @@
 	{
 		NSString *text;
 		
-		if (_preserveNewlines)
+		if (_textTransform == DTHTMLElementTextTransformCapitalize) {
+			text = [_text capitalizedString];
+		}
+		else if (_textTransform == DTHTMLElementTextTransformUpperCase)
+		{
+			text = [_text uppercaseString];
+		}
+		else if (_textTransform == DTHTMLElementTextTransformLowerCase)
+		{
+			text = [_text lowercaseString];
+		}
+		else
 		{
 			text = _text;
+		}
+		
+		if (_preserveNewlines)
+		{
 			
 			// PRE ignores the first \n
 			if ([text hasPrefix:@"\n"])
@@ -65,11 +80,11 @@
 		else if (_containsAppleConvertedSpace)
 		{
 			// replace nbsp; with regular space
-			text = [_text stringByReplacingOccurrencesOfString:UNICODE_NON_BREAKING_SPACE withString:@" "];
+			text = [text stringByReplacingOccurrencesOfString:UNICODE_NON_BREAKING_SPACE withString:@" "];
 		}
 		else
 		{
-			text = [_text stringByNormalizingWhitespace];
+			text = [text stringByNormalizingWhitespace];
 		}
 		
 		NSDictionary *attributes = [self attributesForAttributedStringRepresentation];

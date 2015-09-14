@@ -61,6 +61,7 @@
 	BOOL _containsAppleConvertedSpace;
 	
 	DTHTMLElementFontVariant _fontVariant;
+	DTHTMLElementTextTransform _textTransform;
 	
 	CGFloat _textScale;
 	CGSize _size;
@@ -233,6 +234,8 @@
  */
 
 @property (nonatomic, assign) DTHTMLElementFontVariant fontVariant;
+
+@property (nonatomic, assign) DTHTMLElementTextTransform textTransform;
 
 /**
  The current unscaled font size (used when inheriting font size). You're probably looking for fontDescriptor.pointSize.

@@ -172,6 +172,38 @@ typedef NS_ENUM(NSUInteger, DTHTMLElementFontVariant)
 };
 
 /**
+ DTHTMLElement text tranform
+ */
+typedef NS_ENUM(NSUInteger, DTHTMLElementTextTransform)
+{
+	/**
+	 No capitalization. The text renders as it is. This is default
+	 */
+	DTHTMLElementTextTransformNone = 0,
+	
+	/**
+	 Transforms the first character of each word to uppercase
+	 */
+	DTHTMLElementTextTransformCapitalize,
+	
+	/**
+	 Transforms all characters to uppercase
+	 */
+	DTHTMLElementTextTransformUpperCase,
+	
+	/**
+	 Transforms all characters to lowercase
+	 */
+	DTHTMLElementTextTransformLowerCase,
+	
+	/**
+	 Inherits this property from its parent element.
+	 */
+	DTHTMLElementTextTransformInherit,
+	
+};
+
+/**
  The algorithm that DTCoreTextLayoutFrame uses for positioning lines
  */
 typedef NS_ENUM(NSUInteger, DTCoreTextLayoutFrameLinePositioningOptions)

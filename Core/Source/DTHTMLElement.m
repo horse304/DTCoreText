@@ -1202,6 +1202,37 @@ NSDictionary *_classesForNames = nil;
 		}
 	}
 	
+	
+	NSString *textTransformString = [[styles objectForKey:@"text-transform"] lowercaseString];
+	if (textTransformString)
+	{
+		//No capitalization. The text renders as it is. This is default
+		if ([textTransformString isEqualToString:@"none"])
+		{
+			_textTransform = DTHTMLElementTextTransformNone;
+		}
+		else if ([textTransformString isEqualToString:@"capitalize"])
+		{
+			_textTransform = DTHTMLElementTextTransformCapitalize;
+		}
+		else if ([textTransformString isEqualToString:@"uppercase"])
+		{
+			_textTransform = DTHTMLElementTextTransformUpperCase;
+		}
+		else if ([textTransformString isEqualToString:@"lowercase"])
+		{
+			_textTransform = DTHTMLElementTextTransformLowerCase;
+		}
+		else if ([textTransformString isEqualToString:@"inherit"])
+		{
+			_textTransform = DTHTMLElementTextTransformInherit;
+		}
+		else
+		{
+			_textTransform = DTHTMLElementTextTransformNone;
+		}
+	}
+	
 	NSString *widthString = [styles objectForKey:@"width"];
 	if (widthString && ![widthString isEqualToString:@"auto"])
 	{
@@ -1465,6 +1496,7 @@ NSDictionary *_classesForNames = nil;
 	_headerLevel = element.headerLevel;
 
 	_fontVariant = element.fontVariant;
+	_textTransform = element.textTransform;
 	_underlineStyle = element.underlineStyle;
 	_strikeOut = element.strikeOut;
 	_superscriptStyle = element.superscriptStyle;
@@ -1675,6 +1707,7 @@ NSDictionary *_classesForNames = nil;
 @synthesize preserveNewlines = _preserveNewlines;
 @synthesize displayStyle = _displayStyle;
 @synthesize fontVariant = _fontVariant;
+@synthesize textTransform = _textTransform;
 @synthesize currentTextSize = _currentTextSize;
 @synthesize textScale = _textScale;
 @synthesize size = _size;
